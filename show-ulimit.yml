@@ -1,0 +1,17 @@
+---
+
+- name: Show ulimit
+  hosts: localhost
+  #hosts: all
+  connection: local
+  become: no
+
+  tasks:
+
+    - name: Show ulimit
+      command: ulimit -a
+      register: ulimits
+
+    - debug:
+        var: ulimits.stdout_lines
+      tags: debug
